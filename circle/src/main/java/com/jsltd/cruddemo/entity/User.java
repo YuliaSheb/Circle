@@ -5,7 +5,11 @@ import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
 import java.util.List;
+import lombok.Setter;
+import lombok.Getter;
 
+@Setter
+@Getter
 @Entity
 @Table(name="circle_users")
 public class User {
@@ -13,13 +17,13 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id")
-    private int id;
+    private Long id;
     @Column(name="circle_role")
-    private String circle_role;
+    private String circleRole;
     @Column(name="capacity")
     private double capacity;
     @Column(name="employee_id")
-    private int employee_id;
+    private Long employeeId;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="circle_id", nullable=true)
     @Fetch(FetchMode.JOIN)
@@ -27,52 +31,19 @@ public class User {
 
     public User(){}
 
-    public User(String circle_role, double capacity, int employee_id) {
-        this.circle_role = circle_role;
+    public User(String circleRole, double capacity, Long employeeId) {
+        this.circleRole = circleRole;
         this.capacity = capacity;
-        this.employee_id = employee_id;
+        this.employeeId = employeeId;
     }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getCircle_role() {
-        return circle_role;
-    }
-
-    public void setCircle_role(String circle_role) {
-        this.circle_role = circle_role;
-    }
-
-    public double getCapacity() {
-        return capacity;
-    }
-
-    public void setCapacity(double capacity) {
-        this.capacity = capacity;
-    }
-
-    public int getEmployee_id() {
-        return employee_id;
-    }
-
-    public void setEmployee_id(int employee_id) {
-        this.employee_id = employee_id;
-    }
-
 
     @Override
     public String toString() {
         return "User{" +
                 "id=" + id +
-                ", circle_role='" + circle_role + '\'' +
+                ", circle_role='" + circleRole + '\'' +
                 ", capacity='" + capacity + '\'' +
-                ", employee_id='" + employee_id + '\'' +
+                ", employee_id='" + employeeId + '\'' +
                 '}';
     }
 }

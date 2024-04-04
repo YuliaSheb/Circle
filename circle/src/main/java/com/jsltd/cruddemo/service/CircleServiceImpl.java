@@ -1,8 +1,8 @@
 package com.jsltd.cruddemo.service;
 
 import com.jsltd.cruddemo.dao.CRepository;
-import com.jsltd.cruddemo.dao.CircleRepository;
 import com.jsltd.cruddemo.entity.Circle;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -26,7 +26,7 @@ public class CircleServiceImpl implements CircleService {
     }
 
     @Override
-    public Circle findById(int theId) {
+    public Circle findById(Long theId) {
         Optional<Circle> result = circleRepository.findById(theId);
 
         Circle theCircle = null;
@@ -35,7 +35,7 @@ public class CircleServiceImpl implements CircleService {
             theCircle = result.get();
         }
         else{
-            throw new RuntimeException("Did not find Circle id - "+theId);
+            throw new EntityNotFoundException("Did not find Circle id - "+theId);
         }
 
         return theCircle;
@@ -48,7 +48,7 @@ public class CircleServiceImpl implements CircleService {
 
     @Transactional
     @Override
-    public void deleteById(int theId) {
+    public void deleteById(Long theId) {
         circleRepository.deleteById(theId);
     }
 }

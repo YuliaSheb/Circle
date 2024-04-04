@@ -3,7 +3,11 @@ package com.jsltd.cruddemo.entity;
 import jakarta.persistence.*;
 
 import java.util.List;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 @Entity
 @Table(name="circles")
 public class Circle {
@@ -11,15 +15,15 @@ public class Circle {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id")
-    private int id;
+    private Long id;
     @Column(name="name")
     private String name;
     @Column(name="parent_id")
-    private Integer parent_id;
+    private Long parentId;
     @Column(name="type")
     private String type;
     @Column(name="circle_path")
-    private String circle_path;
+    private String circlePath;
 
     @OneToMany(targetEntity = User.class, mappedBy = "circle", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<User> users;
@@ -27,59 +31,10 @@ public class Circle {
 
     public Circle(){}
 
-    public Circle(String name, Integer parent_id, String type) {
+    public Circle(String name, Long parentId, String type) {
         this.name = name;
-        this.parent_id = parent_id;
+        this.parentId = parentId;
         this.type = type;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public List<User> getUsers() {
-        return users;
-    }
-
-    public void setUsers(List<User> users) {
-        this.users = users;
-    }
-
-
-    public Integer getParent_id() {
-        return parent_id;
-    }
-
-    public void setParent_id(Integer parent_id) {
-        this.parent_id = parent_id;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public String getCircle_path() {
-        return circle_path;
-    }
-
-    public void setCircle_path(String circle_path) {
-        this.circle_path = circle_path;
     }
 
     @Override
@@ -87,7 +42,7 @@ public class Circle {
         return "Circle{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", parent_id='" + parent_id + '\'' +
+                ", parent_id='" + parentId + '\'' +
                 ", type='" + type + '\'' +
                 '}';
     }

@@ -1,26 +1,38 @@
 package com.jsltd.cruddemo.controller;
 
-import com.jsltd.cruddemo.dao.CircleRepository;
+import com.jsltd.cruddemo.dto.CirclesDto;
 import com.jsltd.cruddemo.entity.Circle;
+import com.jsltd.cruddemo.entity.User;
 import com.jsltd.cruddemo.service.CircleService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.jsltd.cruddemo.service.UserService;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 
 @RestController
 @RequestMapping("/circles")
 public class CircleController {
-    private final CircleRepository circleRepository;
+    private CircleService circleService;
+    public CircleController(CircleService theCircleService){
+        circleService = theCircleService;
+    }
 
-    @Autowired
-    public CircleController(CircleRepository circleRepository) {
-        this.circleRepository = circleRepository;
+    private UserService userService;
+    public CircleController(UserService theUserService){
+        userService = theUserService;
     }
 
     @GetMapping("/{circleId}")
-    public List<Circle> getAllCircles(@PathVariable("circleId") int circleId) {
-        return circleRepository.getCircles(circleId);
+    public String listCircle(Model theModel, @PathVariable("circleId") Long circleId){
+        Circle circle = circleService.findById(circleId);
+        theModel.addAttribute("circle", circle);
+        return "circles";
+    }
+
+    @GetMapping("/{userId}")
+    public String listUsers(Model theModel, @PathVariable("userId") Long userId){
+        User user = userService.findById(userId);
+        theModel.addAttribute("user", user);
+        return "users";
     }
 }
