@@ -1,6 +1,7 @@
 package com.jsltd.cruddemo.service;
 
 import com.jsltd.cruddemo.dao.CRepository;
+import com.jsltd.cruddemo.dto.CirclesDto;
 import com.jsltd.cruddemo.entity.Circle;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,9 @@ import java.util.Optional;
 public class CircleServiceImpl implements CircleService {
 
     private CRepository circleRepository;
+
+    @Autowired
+    private MappingUtils mappingUtils;
 
     @Autowired
     public CircleServiceImpl(CRepository theCircleRepository){
@@ -40,6 +44,7 @@ public class CircleServiceImpl implements CircleService {
 
         return theCircle;
     }
+
 
     @Override
     public Circle save(Circle theCircle) {

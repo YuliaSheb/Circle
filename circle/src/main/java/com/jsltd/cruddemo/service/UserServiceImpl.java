@@ -2,6 +2,7 @@ package com.jsltd.cruddemo.service;
 
 import com.jsltd.cruddemo.dao.CRepository;
 import com.jsltd.cruddemo.dao.URepository;
+import com.jsltd.cruddemo.dto.CirclesDto;
 import com.jsltd.cruddemo.entity.Circle;
 import com.jsltd.cruddemo.entity.User;
 import jakarta.persistence.EntityNotFoundException;
@@ -42,6 +43,7 @@ public class UserServiceImpl implements UserService {
 
         return theUser;
     }
+
 
     @Override
     public User save(User theUser) {

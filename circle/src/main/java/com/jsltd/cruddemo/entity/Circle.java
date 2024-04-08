@@ -9,40 +9,49 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name="circles")
+@Table(name = "circles")
 public class Circle {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id")
+    @Column(name = "id")
     private Long id;
-    @Column(name="name")
+
+    @Column(name = "name")
     private String name;
-    @Column(name="parent_id")
-    private Long parentId;
-    @Column(name="type")
+
+    @Column(name = "type")
     private String type;
-    @Column(name="circle_path")
+
+    @Column(name = "circle_path")
     private String circlePath;
 
     @OneToMany(targetEntity = User.class, mappedBy = "circle", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<User> users;
 
+    @OneToMany(targetEntity = Circle.class, mappedBy = "parent", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Circle> childCircles;
 
-    public Circle(){}
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "parent_id")
+    private Circle parent;
 
-    public Circle(String name, Long parentId, String type) {
+
+    public Circle() {
+    }
+
+    public Circle(String name, String type) {
         this.name = name;
-        this.parentId = parentId;
         this.type = type;
     }
 
     @Override
     public String toString() {
+        String parentIdString = (parent != null) ? String.valueOf(parent.getId()) : "null";
         return "Circle{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", parent_id='" + parentId + '\'' +
+                ", parentId=" + parentIdString +
                 ", type='" + type + '\'' +
                 '}';
     }
