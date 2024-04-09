@@ -8,12 +8,20 @@ In database 4 circles...
 Without redis
 
 
-<img width="632" alt="image" src="https://github.com/YuliaSheb/Circle/assets/79199794/4b64477e-e6d5-455f-a225-0a0160ccb89b">
+<img width="659" alt="image" src="https://github.com/YuliaSheb/Circle/assets/79199794/16365f52-f9af-4ac8-a6e4-4131503f482c">
+
 
 
 With redis
 
 
-<img width="659" alt="image" src="https://github.com/YuliaSheb/Circle/assets/79199794/847f5ff1-3f68-431a-a6c8-910c505539eb">
+<img width="659" alt="image" src="https://github.com/YuliaSheb/Circle/assets/79199794/1661ec43-bc21-44a0-b3c6-cd81b2d009cb">
+
+
+With @Cacheable
+
+
+<img width="664" alt="image" src="https://github.com/YuliaSheb/Circle/assets/79199794/46b0ec46-e64c-4d04-a8ae-cd18bbd4cb18">
+
 
 
