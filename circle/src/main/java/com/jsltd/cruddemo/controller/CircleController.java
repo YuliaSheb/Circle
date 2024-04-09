@@ -24,13 +24,8 @@ import static redis.clients.jedis.Protocol.Command.TTL;
 @RestController
 @RequestMapping("/circles")
 public class CircleController {
-//    private CircleService circleService;
-//    public CircleController(CircleService theCircleService){
-//        circleService = theCircleService;
-//    }
 
     private CirclesDtoService circlesService;
-    //private JedisPool jedisPool;
     private ObjectMapper mapper;
 
     JedisPoolConfig poolConfig = new JedisPoolConfig();
@@ -41,19 +36,6 @@ public class CircleController {
         this.circlesService = circlesService;
         this.mapper = mapper;
     }
-
-
-//    private UserService userService;
-//    public CircleController(UserService theUserService){
-//        userService = theUserService;
-//    }
-
-//    @GetMapping("/{circleId}")
-//    public String listCircle(Model theModel, @PathVariable("circleId") Long circleId){
-//        Circle circle = circleService.findById(circleId);
-//        theModel.addAttribute("circle", circle);
-//        return "circles";
-//    }
 
 
     @GetMapping("/{id}")
@@ -98,6 +80,18 @@ public class CircleController {
             throw new RuntimeException(e);
         }
     }
+
+//    private UserService userService;
+//    public CircleController(UserService theUserService){
+//        userService = theUserService;
+//    }
+
+//    @GetMapping("/{circleId}")
+//    public String listCircle(Model theModel, @PathVariable("circleId") Long circleId){
+//        Circle circle = circleService.findById(circleId);
+//        theModel.addAttribute("circle", circle);
+//        return "circles";
+//    }
 
 //    @GetMapping("/{userId}")
 //    public String listUsers(Model theModel, @PathVariable("userId") Long userId){
