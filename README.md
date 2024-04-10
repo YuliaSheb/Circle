@@ -1,4 +1,4 @@
-In database 4 circles...
+In database 20 circles...
 
 
 <img width="487" alt="image" src="https://github.com/YuliaSheb/Circle/assets/79199794/15eb753a-0257-44df-b273-adfb461db43d">
@@ -8,14 +8,16 @@ In database 4 circles...
 Without redis
 
 
-<img width="659" alt="image" src="https://github.com/YuliaSheb/Circle/assets/79199794/16365f52-f9af-4ac8-a6e4-4131503f482c">
+<img width="649" alt="image" src="https://github.com/YuliaSheb/Circle/assets/79199794/fde1dfa5-f1dd-4ef6-a995-e4856f8b90f9">
+
 
 
 
 With redis
 
 
-<img width="659" alt="image" src="https://github.com/YuliaSheb/Circle/assets/79199794/1661ec43-bc21-44a0-b3c6-cd81b2d009cb">
+<img width="657" alt="image" src="https://github.com/YuliaSheb/Circle/assets/79199794/c2fa6a44-4063-42e4-8d18-b21f94803d91">
+
 
 
 With @Cacheable
