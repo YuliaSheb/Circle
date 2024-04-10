@@ -8,7 +8,8 @@ In database 20 circles...
 Without redis
 
 
-<img width="649" alt="image" src="https://github.com/YuliaSheb/Circle/assets/79199794/fde1dfa5-f1dd-4ef6-a995-e4856f8b90f9">
+<img width="661" alt="image" src="https://github.com/YuliaSheb/Circle/assets/79199794/0a1300b1-381c-4258-ae14-d387e0f31d20">
+
 
 
 
