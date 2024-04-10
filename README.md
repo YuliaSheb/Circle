@@ -24,7 +24,8 @@ With redis
 With @Cacheable
 
 
-<img width="664" alt="image" src="https://github.com/YuliaSheb/Circle/assets/79199794/46b0ec46-e64c-4d04-a8ae-cd18bbd4cb18">
+<img width="654" alt="image" src="https://github.com/YuliaSheb/Circle/assets/79199794/a4bc8e0b-f7be-443f-afbc-27b4b899df6c">
+
 
 
 
