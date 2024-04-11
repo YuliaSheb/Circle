@@ -26,6 +26,9 @@ public class Circle {
     @Column(name = "circle_path")
     private String circlePath;
 
+    @Column(name = "status")
+    private String status;
+
     @OneToMany(targetEntity = User.class, mappedBy = "circle", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<User> users;
 
@@ -40,9 +43,10 @@ public class Circle {
     public Circle() {
     }
 
-    public Circle(String name, String type) {
+    public Circle(String name, String type, String status) {
         this.name = name;
         this.type = type;
+        this.status = status;
     }
 
     @Override
@@ -53,6 +57,7 @@ public class Circle {
                 ", name='" + name + '\'' +
                 ", parentId=" + parentIdString +
                 ", type='" + type + '\'' +
+                ", status='" + status + '\'' +
                 '}';
     }
 }

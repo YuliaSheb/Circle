@@ -12,6 +12,7 @@ public class CirclesDto {
     private String name;
     private Long parentId;
     private String type;
+    private String status;
     private Object[] users;
     private List<CirclesDto> childCircles;
 

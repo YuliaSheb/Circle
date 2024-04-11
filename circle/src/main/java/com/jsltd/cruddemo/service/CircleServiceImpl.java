@@ -31,20 +31,9 @@ public class CircleServiceImpl implements CircleService {
 
     @Override
     public Circle findById(Long theId) {
-        Optional<Circle> result = circleRepository.findById(theId);
-
-        Circle theCircle = null;
-
-        if(result.isPresent()){
-            theCircle = result.get();
-        }
-        else{
-            throw new EntityNotFoundException("Did not find Circle id - "+theId);
-        }
-
-        return theCircle;
+        return circleRepository.findById(theId)
+                .orElseThrow(() -> new EntityNotFoundException("Did not find Circle id - " + theId));
     }
-
 
     @Override
     public Circle save(Circle theCircle) {

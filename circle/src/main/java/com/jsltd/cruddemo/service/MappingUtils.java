@@ -1,6 +1,7 @@
 package com.jsltd.cruddemo.service;
 
 import com.jsltd.cruddemo.dto.CirclesDto;
+import com.jsltd.cruddemo.dto.UserDto;
 import com.jsltd.cruddemo.entity.Circle;
 import com.jsltd.cruddemo.entity.User;
 import org.springframework.stereotype.Service;
@@ -17,6 +18,7 @@ public class MappingUtils {
         dto.setName(circle.getName());
         dto.setParentId((circle.getParent() != null) ? circle.getParent().getId() : null);
         dto.setType(circle.getType());
+        dto.setStatus(circle.getStatus());
         dto.setUsers(mapUsersToArray(circle.getUsers()));
         dto.setChildCircles(mapChildCirclesToArray(circle.getChildCircles()));
         return dto;
@@ -40,4 +42,18 @@ public class MappingUtils {
         }
         return circleArray;
     }
+
+//    private List<UserDto> mapUsersDtoList(List<User> users) {
+//        List<UserDto> userArray = new ArrayList<>();
+//        for (User user : users) {
+//            UserDto userDto = mapUserDto(user);
+//            userArray.add(userDto);
+//        }
+//        return userArray;
+//    }
+//
+//    private UserDto mapUserDto(User user) {
+//        UserDto userDto = new UserDto();
+//        return userDto;
+//    }
 }
