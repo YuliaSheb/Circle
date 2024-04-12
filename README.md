@@ -1,3 +1,19 @@
+Filters
+
+Without
+
+<img width="453" alt="image" src="https://github.com/YuliaSheb/Circle/assets/79199794/e59fada1-3e9b-4b09-a754-a2137e3448d2">
+
+
+With
+
+<img width="642" alt="image" src="https://github.com/YuliaSheb/Circle/assets/79199794/985d4522-0e39-4e79-9c8b-ba88cf663c73">
+
+
+<img width="634" alt="image" src="https://github.com/YuliaSheb/Circle/assets/79199794/ff4b5921-3f46-4b10-b508-9866c889270a">
+
+
+
 In database 20 circles...
 
 
