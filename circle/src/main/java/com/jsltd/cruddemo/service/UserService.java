@@ -13,4 +13,6 @@ public interface UserService {
     User save(User theUser);
 
     void deleteById(Long theId);
+
+    User findByEmployeeId(Long employeeId);
 }
