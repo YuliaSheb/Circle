@@ -1,7 +1,6 @@
 package com.jsltd.cruddemo.service;
 
 import com.jsltd.cruddemo.dto.CirclesDto;
-import com.jsltd.cruddemo.dto.UserDto;
 import com.jsltd.cruddemo.entity.Circle;
 import com.jsltd.cruddemo.entity.User;
 import org.springframework.stereotype.Service;

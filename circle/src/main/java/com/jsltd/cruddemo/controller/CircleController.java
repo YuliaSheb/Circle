@@ -6,6 +6,7 @@ import com.jsltd.cruddemo.dto.CirclesDto;
 import com.jsltd.cruddemo.service.CirclesDtoService;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
@@ -76,17 +77,24 @@ public class CircleController {
             @RequestParam(required = false) List<String> statuses
     ) {
         CirclesDto circle = circlesService.findById(id);
-        if (statuses != null && !statuses.isEmpty()) {
-            String circleStatus = circle.getStatus();
-            if (!statuses.contains(circleStatus)) {
-                System.out.println(statuses);
-                System.out.println(circleStatus);
-                String errorMessage = "Invalid status for the requested circle.";
-                return errorMessage;
-            }
-            circle.setChildCircles(filterChildrenByStatus(circle.getChildCircles(), statuses));
-        }
-        return circle;
+        return circlesService.filterCirclesByStatus(circle, statuses);
+    }
+
+    @GetMapping("/{id}/user/{userId}")
+    public CirclesDto getCirclesByIdAndUser(@PathVariable Long id, @PathVariable Long userId) {
+        CirclesDto circlesDto = circlesService.findByIdAndUser(id, userId);
+
+        return circlesDto;
+    }
+
+            @GetMapping("/filter")
+    public Object getCircleByIdAndFilterRand(
+            @RequestParam(required = false) List<String> statuses
+    ) {
+        Random random = new Random();
+        long id = random.nextInt(64) + 1;
+        CirclesDto circle = circlesService.findById(id);
+        return circlesService.filterCirclesByStatus(circle, statuses);
     }
 
     private List<CirclesDto> filterChildrenByStatus(List<CirclesDto> children, List<String> statuses) {
@@ -111,7 +119,7 @@ public class CircleController {
     @GetMapping("/cache")
     public CirclesDto getCachedRandomCircle(){
         Random random = new Random();
-        long randomId = random.nextInt(4) + 1;
+        long randomId = random.nextInt(64) + 1;
         try (Jedis jedis = jedisPool.getResource()){
             String key = "circle:%d".formatted(randomId);
             String raw = jedis.get(key);
@@ -129,6 +137,20 @@ public class CircleController {
         }catch (JsonProcessingException e){
             throw new RuntimeException(e);
         }
+    }
+
+    @GetMapping("/cache/filter/{id}")
+    public CirclesDto getCachedAndFilterCircle( @PathVariable Long id,
+                                                @RequestParam(required = false) List<String> statuses) {
+        return circlesService.getCachedCircle(id, statuses);
+    }
+
+    @GetMapping("/cache/filter")
+    public CirclesDto getCachedAndFilterCircleRand(@RequestParam(required = false) List<String> statuses) {
+        Random random = new Random();
+        long id = random.nextInt(64) + 1;
+        System.out.println(id);
+        return circlesService.getCachedCircle(id, statuses);
     }
 
 //    @GetMapping("/{userId}")
