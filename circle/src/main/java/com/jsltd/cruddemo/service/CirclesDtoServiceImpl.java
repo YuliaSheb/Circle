@@ -76,7 +76,7 @@ public class CirclesDtoServiceImpl implements CirclesDtoService{
                 .orElse(new Circle());
 
         if (circle != null) {
-            User currentUser = userRepository.findById(userId)
+            User currentUser = userRepository.findByEmployeeId(userId)
                     .orElse(new User());
 
             if (currentUser != null && isUserInCircle(currentUser, circle)) {
